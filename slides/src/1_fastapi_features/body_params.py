@@ -7,16 +7,21 @@ To run this example, use the following command:
 
 And then open your browser at http://localhost:8000/docs.
 """
+from typing import Annotated
+
 
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 app = FastAPI()
 
+NameType = Annotated[str, Field(examples=["Potato"])]
+DescriptionType = Annotated[str, Field(examples=["Tomato"])]
+
 
 class Item(BaseModel):
-    name: str
-    description: str
+    name: NameType
+    description: DescriptionType
 
 
 @app.post("/items/")

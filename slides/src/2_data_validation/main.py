@@ -19,5 +19,4 @@ class ItemOutput(Item):
 
 @app.post("/items/", response_model=ItemOutput)
 def create_item(item: Item):
-    item.de  # This line fails!
-    return {"item_id": 42, **item.dict()}
+    return {"item_id": 42, **item.model_dump()}

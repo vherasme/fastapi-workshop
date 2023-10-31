@@ -12,6 +12,6 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.get("/")
-def home():
-    return {"Hello": "World"}
+@app.get("/{age}")
+def home(age: int):
+    return {"Hello": age}
